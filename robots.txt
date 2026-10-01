@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shadigii.github.io/shadigii/sitemap.xml
