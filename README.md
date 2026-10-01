@@ -1,49 +1,23 @@
-# Sha Digii Website — Final Static Build
+# Sha Digii — Final Static Website
 
-## Pages
-- `index.html` — Home
-- `our-work.html` — Full portfolio with automatic filters and click-to-preview lightbox
-- `about.html` — About Us + client recommendations
-- `packages.html` — Main packages + expandable add-ons
-- `build-your-plan.html` — Package selector, add-on selection, live total and WhatsApp message
-- `contact.html` — Contact details and social links
+Static HTML/CSS/JavaScript site for Sha Digii.
 
-## Important site data
-Edit `assets/data.js` for the single source of truth:
-- `SITE` — phone/WhatsApp, email, Facebook, Instagram
-- `packages` — main monthly packages
-- `addons` — add-on packages
-- `portfolio` — all work + future categories
-- `testimonials` — real client reviews
-- `faqs` — FAQ content
+## Files
+- `index.html` — home, recent work, main packages, full build-your-plan section, about preview, testimonials, FAQ, contact CTA
+- `our-work.html` — full portfolio + generated filters + media preview
+- `about.html` — company story + services + client recommendations
+- `packages.html` — main monthly packages + expandable add-ons
+- `build-your-plan.html` — package/add-on planner + WhatsApp message builder
+- `contact.html` — contact details and links
+- `assets/data.js` — single source of truth for contact details, packages, add-ons, portfolio, reviews and FAQs
+- `assets/app.js` — rendering, filters, planner, WhatsApp links, expandable add-ons, media lightbox and Reel playback
+- `assets/styles.css` — responsive design
 
-## Adding new work later
-Add a new object at the **TOP** of the `portfolio` array so it becomes the newest item on Home. Include:
-- `type`
-- `client`
-- `title`
-- `result`
-- `caption`
-- `image`
-- optional `video` (MP4 path) for playable Reels
-- optional `externalUrl` for live websites
+## Future portfolio update
+Add a new object at the top of the `portfolio` array in `assets/data.js`. For images use `mediaType: 'image'`; for videos use `mediaType: 'video'` and a poster; for multiple images in one card use `mediaType: 'gallery'` and a `media` array. The Home recent-work section uses the same portfolio data.
 
-Our Work filters are generated automatically from the `type` values, so adding a new type also creates a new filter.
+## GitHub Pages
+The current deployment target is the project-site URL:
+`https://shadigii.github.io/shadigii/`
 
-## Portfolio images
-The standard image card uses a 4:5 display ratio. The current supplied images are included in `assets/portfolio/`. Clicking a card opens a larger preview. If `video` is populated, the lightbox uses a native video player.
-
-## WhatsApp plan builder
-The WhatsApp destination is `94761018668`. The builder composes a message containing each selected item, its price and the total.
-
-## Current package prices
-- Homepreneur — LKR 25,000 / month
-- Buildpreneur — LKR 35,000 / month
-- Growpreneur — LKR 45,000 / month
-- Growth Surge Pack — LKR 5,500
-- InstaBuzz Pack — LKR 7,500
-- Revenue Rocket — LKR 10,000
-- Content Creation Pack — LKR 12,000
-- Reel Studio Pack — LKR 15,000
-- Store Stocker Pack — LKR 15,000
-- Business Autopilot Pack — LKR 20,000
+Publish from branch `main` and folder `/ (root)`.
