@@ -46,6 +46,65 @@ const addons = [
 
 const portfolio = [
   {
+    id:'pt-hardware-creatives', type:'Post', client:'Premium Traders', title:'Premium hardware, built to stand out',
+    result:'35–40 orders from this post', caption:'Premium Traders, Colombo · Aluminium & hardware · Product-focused creatives built to drive orders',
+    mediaType:'gallery', autoSlide:true,
+    media:[
+      'assets/portfolio/premium-traders-post/01-aluminium-step-ladder.png',
+      'assets/portfolio/premium-traders-post/02-utility-rolling-cart.jpg',
+      'assets/portfolio/premium-traders-post/03-rivet-gun.jpg',
+      'assets/portfolio/premium-traders-post/04-vvp-patch-fittings.jpg'
+    ],
+    socialUrl:'https://www.instagram.com/_premium_traders___/' , socialLabel:'View on Instagram ↗'
+  },
+  {
+    id:'mcdodo-product-creatives', type:'Post', client:'Mcdodo', title:'From product features to real customer orders',
+    result:'3,000+ views · 10–15 inquiries · 3 orders', caption:'Mcdodo · Tech & mobile accessories · 3,000+ views, 10–15 inquiries and 3 orders from product-focused creatives',
+    mediaType:'gallery', autoSlide:true,
+    media:[
+      'assets/portfolio/mcdodo-post/01-transparent-series.png',
+      'assets/portfolio/mcdodo-post/02-g5-series.png',
+      'assets/portfolio/mcdodo-post/03-speaka01-series.png',
+      'assets/portfolio/mcdodo-post/04-gana-mini-series.png',
+      'assets/portfolio/mcdodo-post/05-built-to-stay-designed-to-perform.png',
+      'assets/portfolio/mcdodo-post/06-more-power-more-confidence.png',
+      'assets/portfolio/mcdodo-post/07-silence-that-moves-you.png'
+    ],
+    socialUrl:'https://www.instagram.com/mcdodo.lk/', socialLabel:'View on Instagram ↗'
+  },
+  {
+    id:'lankan-mart-product-posts', type:'Post', client:'Lankan Mart LK', title:'Everyday products that turned attention into orders',
+    result:'5,000+ views · 50+ inquiries · 20+ orders', caption:'Lankan Mart LK, Islandwide · Multi-category product creatives · 5,000+ views, 50+ inquiries and 20+ orders',
+    mediaType:'gallery', autoSlide:true,
+    media:[
+      'assets/portfolio/lankan-mart-post/01-umbrella.png',
+      'assets/portfolio/lankan-mart-post/02-makeup-brush-cleaner.png',
+      'assets/portfolio/lankan-mart-post/03-elevate-style-watch.png',
+      'assets/portfolio/lankan-mart-post/04-bold-by-design-watch.png',
+      'assets/portfolio/lankan-mart-post/05-scarf-shawl-organizer.png',
+      'assets/portfolio/lankan-mart-post/06-four-layer-shoe-rack.png'
+    ],
+    socialUrl:'https://www.instagram.com/lankan_mart.lk/', socialLabel:'View on Instagram ↗'
+  },
+  {
+    id:'herstore-toner-reel', type:'Reel', client:'HerStore.lk', title:'The product that made skincare stop and look',
+    result:'3,000+ views · 25 inquiries', caption:'HerStore.lk, Islandwide · Skincare · Product-focused Reel that generated 3,000+ views and 25 customer inquiries',
+    mediaType:'video', poster:'assets/portfolio/herstore-reel/05-the-ordinary-milky-toner-reel-poster.jpg', video:'assets/portfolio/herstore-reel/05-the-ordinary-milky-toner-reel.mp4',
+    socialUrl:'https://www.instagram.com/herstore.lk/', socialLabel:'View on Instagram ↗'
+  },
+  {
+    id:'herstore-sunscreen-post', type:'Post', client:'HerStore.lk', title:'Everyday sun protection, made for every skin type',
+    result:'2,500+ views · 100+ profile visits · 20+ inquiries', caption:'HerStore.lk, Islandwide · Sunscreen & skincare · Product-focused creatives that generated 2,500+ views, 100+ profile visits and 20+ customer inquiries',
+    mediaType:'gallery', autoSlide:true,
+    media:[
+      'assets/portfolio/herstore-post/01-eucerin-sun.jpg',
+      'assets/portfolio/herstore-post/02-cerave-spf30.jpg',
+      'assets/portfolio/herstore-post/03-cetaphil-spf50.jpg',
+      'assets/portfolio/herstore-post/04-cosrx-aloe-sun.jpg'
+    ],
+    socialUrl:'https://www.instagram.com/herstore.lk/', socialLabel:'View on Instagram ↗'
+  },
+  {
     id:'pt-marble-reel', type:'Reel', client:'Premium Traders', title:'Luxury marble look, without the heavy cost',
     result:'LKR 70,000+ in sales', caption:'Premium Traders, Colombo · Marble-look sheets · 371 inquiries at just LKR 7 each',
     mediaType:'video', poster:'assets/portfolio/01-premium-traders-marble-reel.jpg', video:'assets/portfolio/01-premium-traders-marble-reel.mp4'

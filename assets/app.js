@@ -82,7 +82,7 @@ function portfolioCard(item,index){
     <button class="work-media ${item.mediaType==='video'?'is-video':''} ${item.mediaType==='gallery'?'is-gallery':''}" type="button" data-open-portfolio="${index}" aria-label="Open ${escapeHtml(item.title)} preview">
       ${visual}<span class="media-badge">${escapeHtml(item.type.toUpperCase())}</span>${item.mediaType==='image' || item.mediaType==='gallery'?'<span class="media-icon" aria-hidden="true">↗</span>':''}
     </button>
-    <div class="work-info"><div class="work-heading"><h3>${escapeHtml(item.title)}</h3>${item.externalUrl?`<a class="visit-link" href="${item.externalUrl}" target="_blank" rel="noopener">Visit live site ↗</a>`:''}</div><span class="result-badge">${escapeHtml(item.result)}</span><p>${escapeHtml(item.caption)}</p></div>
+    <div class="work-info"><div class="work-heading"><h3>${escapeHtml(item.title)}</h3>${item.externalUrl?`<a class="visit-link" href="${item.externalUrl}" target="_blank" rel="noopener">Visit live site ↗</a>`:item.socialUrl?`<a class="visit-link" href="${item.socialUrl}" target="_blank" rel="noopener">${escapeHtml(item.socialLabel||'View on Instagram ↗')}</a>`:''}</div><span class="result-badge">${escapeHtml(item.result)}</span><p>${escapeHtml(item.caption)}</p></div>
   </article>`;
 }
 
@@ -94,7 +94,7 @@ function ensureLightbox(){
       <button class="lightbox-arrow prev" data-lightbox-prev aria-label="Previous media">‹</button>
       <div class="lightbox-stage"><div class="lightbox-stage-inner"></div><div class="lightbox-counter" data-lightbox-counter></div></div>
       <button class="lightbox-arrow next" data-lightbox-next aria-label="Next media">›</button>
-      <aside class="lightbox-copy"><span class="eyebrow">PROJECT PREVIEW</span><h3 data-lightbox-title></h3><div class="lightbox-result" data-lightbox-result></div><p data-lightbox-caption></p><a class="visit-link lightbox-link" data-lightbox-link hidden target="_blank" rel="noopener">Visit live site ↗</a><div class="lightbox-hint">Use the arrows to browse media and projects.</div></aside>
+      <aside class="lightbox-copy"><span class="eyebrow">PROJECT PREVIEW</span><h3 data-lightbox-title></h3><div class="lightbox-result" data-lightbox-result></div><p data-lightbox-caption></p><a class="visit-link lightbox-link" data-lightbox-link hidden target="_blank" rel="noopener"></a><div class="lightbox-hint">Use the arrows to browse media and projects.</div></aside>
     </div>
   </div>`);
 }
@@ -109,7 +109,7 @@ function bindLightbox(items){
     if(m.kind==='video') stage.innerHTML=`<video controls playsinline preload="metadata" poster="${m.poster||''}"><source src="${m.src}" type="video/mp4">Your browser does not support the video tag.</video>`;
     else stage.innerHTML=`<img src="${m.src}" alt="${escapeHtml(item.title)} — ${escapeHtml(item.client)}">`;
     title.textContent=item.title; result.textContent=`${item.client} · ${item.type} · ${item.result}`; caption.textContent=item.caption; counter.textContent=medias.length>1?`Media ${mediaIndex+1} / ${medias.length} · Project ${itemIndex+1} / ${items.length}`:`Project ${itemIndex+1} / ${items.length}`;
-    if(item.externalUrl){link.hidden=false; link.href=item.externalUrl;} else {link.hidden=true; link.removeAttribute('href');}
+    if(item.externalUrl || item.socialUrl){link.hidden=false; link.href=item.externalUrl||item.socialUrl; link.textContent=item.externalUrl?'Visit live site ↗':(item.socialLabel||'View on Instagram ↗');} else {link.hidden=true; link.removeAttribute('href'); link.textContent='';}
   };
   const showItem=(idx,dir=1)=>{itemIndex=(idx+items.length)%items.length; mediaIndex=dir>0?0:Math.max(0,mediaFor(items[itemIndex]).length-1); render();};
   modal.querySelector('[data-lightbox-close]').addEventListener('click',close);
