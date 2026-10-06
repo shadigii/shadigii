@@ -6,8 +6,6 @@ const SITE = {
   tagline: 'TURNING CLICKS INTO CUSTOMERS',
   whatsapp: '94761018668',
   whatsappDisplay: '076 101 8668',
-  hrWhatsapp: '94766347108',
-  hrWhatsappDisplay: '076 634 7108',
   email: 'shadigii.agency@gmail.com',
   facebook: 'https://web.facebook.com/shadigii/',
   instagram: 'https://www.instagram.com/sha.digii/',
@@ -60,12 +58,12 @@ const hrPackages = [
 ];
 
 const addons = [
-  { id:'growth-surge', name:'Growth Surge Pack', price:5500, category:'Social Addon Package', summary:'FB Page Growth Pack', highlights:['800–1,000 Page Likes','Sri Lanka audience focus','Delivery: 5–7 days'] },
-  { id:'instabuzz', name:'InstaBuzz Pack', price:7500, category:'IG Profile Growth Pack', summary:'IG Profile Growth Pack', highlights:['800–1,000 Followers','Balanced & natural growth speed','Delivery: 5–7 days'] },
-  { id:'revenue-rocket', name:'Revenue Rocket', price:10000, category:'Sales Addon Package', summary:'Customer inquiry generation', highlights:['80–100 Leads','Target Audience Base','Delivery: 5–7 days'] },
-  { id:'content-creation', name:'Content Creation Pack', price:12000, category:'Content Creation Addon Package', summary:'Posts & reels ready to publish', highlights:['8 Posts','4 Reels','8–12 total content pieces','Delivery: 1–3 days'] },
-  { id:'reel-studio', name:'Reel Studio Pack', price:15000, category:'Video Creation Addon Package', summary:'Professional short-form videos', highlights:['5–6 videos, 15–60 seconds each','Concept & script ideas included','Captions, music & transitions','1 revision per video','Optimized for FB Reels, IG Reels & TikTok','Delivery: 3–5 days'] },
-  { id:'store-stocker', name:'Store Stocker Pack', price:15000, category:'Website Addon Package', summary:'Website product upload support', highlights:['100 Products Uploaded','SEO-friendly titles & descriptions','Pricing, variants & categories','Up to 4 images per product','WooCommerce & Shopify support','Delivery: 3–5 days'], footnote:'Extra products: LKR 100 per product' },
+  { id:'growth-surge', name:'Growth Surge Pack', price:5500, billing:'one-time', category:'Social Addon Package', summary:'FB Page Growth Pack', highlights:['800–1,000 Page Likes','Sri Lanka audience focus','Delivery: 5–7 days'] },
+  { id:'instabuzz', name:'InstaBuzz Pack', price:7500, billing:'one-time', category:'IG Profile Growth Pack', summary:'IG Profile Growth Pack', highlights:['800–1,000 Followers','Balanced & natural growth speed','Delivery: 5–7 days'] },
+  { id:'revenue-rocket', name:'Revenue Rocket', price:10000, billing:'one-time', category:'Sales Addon Package', summary:'Customer inquiry generation', highlights:['80–100 Leads','Target Audience Base','Delivery: 5–7 days'] },
+  { id:'content-creation', name:'Content Creation Pack', price:12000, billing:'one-time', category:'Content Creation Addon Package', summary:'Posts & reels ready to publish', highlights:['8 Posts','4 Reels','8–12 total content pieces','Delivery: 1–3 days'] },
+  { id:'reel-studio', name:'Reel Studio Pack', price:15000, billing:'one-time', category:'Video Creation Addon Package', summary:'Professional short-form videos', highlights:['5–6 videos, 15–60 seconds each','Concept & script ideas included','Captions, music & transitions','1 revision per video','Optimized for FB Reels, IG Reels & TikTok','Delivery: 3–5 days'] },
+  { id:'store-stocker', name:'Store Stocker Pack', price:15000, billing:'one-time', category:'Website Addon Package', summary:'Website product upload support', highlights:['100 Products Uploaded','SEO-friendly titles & descriptions','Pricing, variants & categories','Up to 4 images per product','WooCommerce & Shopify support','Delivery: 3–5 days'], footnote:'Extra products: LKR 100 per product' },
   { id:'hr-recruitment', name:'Recruitment', price:8000, category:'HR One-Time / Add-On Service', summary:'Recruitment support priced by role', highlights:['Junior / General Positions — from LKR 8,000 per successful hire','Professional / Specialist Positions — from LKR 14,000 per successful hire','Senior / Management Positions — from LKR 20,000 per successful hire'], billing:'one-time', priceLabel:'From LKR 8,000', variable:true },
   { id:'employee-documentation', name:'Employee Documentation', price:10000, category:'HR One-Time / Add-On Service', summary:'HR documentation setup for your team', highlights:['Starting from LKR 10,000'], billing:'one-time', priceLabel:'From LKR 10,000', variable:true },
   { id:'onsite-hr-support', name:'On-Site HR Support', price:3000, category:'HR One-Time / Add-On Service', summary:'On-site HR support when required', highlights:['LKR 3,000–5,000 per day','Depending on location and requirements','Travel expenses may apply separately'], billing:'one-time', priceLabel:'LKR 3,000–5,000 / day', variable:true }
@@ -211,6 +209,15 @@ const services = [
   { icon:'▤', title:'Online sales support', text:'Help with customer inquiries, order confirmation and day-to-day digital operations.' }
 ];
 
+
+const marketingPackageServices = [
+  { icon:'◎', title:'Social media content', text:'Plan and post your Facebook and Instagram content every month.' },
+  { icon:'✦', title:'Designed posts', text:'Monthly designed posts included based on the package you choose.' },
+  { icon:'↗', title:'Reels & stories', text:'Reels plus 30 days of stories, with posting frequency based on your package.' },
+  { icon:'◌', title:'Advertising', text:'Ad campaigns run biweekly according to your selected package.' },
+  { icon:'▤', title:'Marketplace listings', text:'Products listed on Marketplace based on your monthly package limit.' },
+  { icon:'▣', title:'Website management', text:'Product uploads or updates and store maintenance where included in your package.' }
+];
 
 const hrServices = [
   { icon:'⌂', title:'Recruitment & hiring', text:'Job descriptions, job ads, CV screening, shortlisting, interview coordination, reference-check coordination and onboarding support.' },

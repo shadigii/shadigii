@@ -2,7 +2,6 @@ const money = n => 'LKR ' + Number(n).toLocaleString('en-US');
 const typeSlug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 const waUrl = msg => `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(msg)}`;
-const hrWaUrl = msg => `https://wa.me/${SITE.hrWhatsapp}?text=${encodeURIComponent(msg)}`;
 
 function whatsappIcon(){
   return '<svg class="wa-svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.84 11.84 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.92c0 2.1.55 4.14 1.6 5.94L.08 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.57 0 11.92-5.35 11.92-11.92 0-3.18-1.24-6.17-3.47-8.4ZM12.07 21.76h-.01a9.84 9.84 0 0 1-5.01-1.37l-.36-.21-3.74.98 1-3.65-.23-.37a9.84 9.84 0 1 1 8.35 4.62Zm5.41-7.4c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.69.15-.2.3-.79.97-.97 1.17-.18.2-.36.22-.66.08-1.5-.75-2.49-1.33-3.49-3.01-.26-.45.26-.42.75-1.4.08-.2.04-.37-.02-.52-.06-.15-.69-1.66-.95-2.27-.25-.6-.51-.52-.69-.53h-.59c-.2 0-.52.08-.8.37-.28.3-1.05 1.02-1.05 2.49s1.08 2.89 1.22 3.09c.15.2 2.13 3.26 5.16 4.57.72.31 1.28.5 1.71.64.72.23 1.38.2 1.9.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.18-1.43-.07-.12-.27-.2-.56-.35Z"/></svg>';
@@ -59,13 +58,17 @@ function setContactData(){
   document.querySelectorAll('[data-fb-link]').forEach(x=>x.href=SITE.facebook);
   document.querySelectorAll('[data-ig-link]').forEach(x=>x.href=SITE.instagram);
   document.querySelectorAll('[data-review-link]').forEach(x=>x.href=SITE.facebookReviews);
-  document.querySelectorAll('[data-hr-wa-number]').forEach(x=>x.textContent=SITE.hrWhatsappDisplay);
-  document.querySelectorAll('[data-hr-wa-link]').forEach(x=>{x.href=hrWaUrl('Hi Sha Digii! I’d like to discuss your outsourced HR services for my business.');});
+  document.querySelectorAll('[data-hr-wa-number]').forEach(x=>x.textContent=SITE.whatsappDisplay);
+  document.querySelectorAll('[data-hr-wa-link]').forEach(x=>{x.href=waUrl('Hi Sha Digii! I’d like to discuss your outsourced HR services for my business.');});
 }
 
 function serviceCards(){
   const w=document.querySelector('[data-services]'); if(!w) return;
   w.innerHTML=services.map(s=>`<article class="service-card"><span class="service-icon">${s.icon}</span><h3>${escapeHtml(s.title)}</h3><p>${escapeHtml(s.text)}</p></article>`).join('');
+}
+function marketingPackageServiceCards(){
+  const w=document.querySelector('[data-marketing-package-services]'); if(!w) return;
+  w.innerHTML=marketingPackageServices.map(s=>`<article class="service-card"><span class="service-icon">${s.icon}</span><h3>${escapeHtml(s.title)}</h3><p>${escapeHtml(s.text)}</p></article>`).join('');
 }
 function hrServiceCards(){
   const w=document.querySelector('[data-hr-services]'); if(!w) return;
@@ -167,13 +170,13 @@ function renderPackages(){document.querySelectorAll('[data-package-grid]').forEa
 function hrPackageCard(p){
   const items=p.items.map(x=>`<li><b>✓</b><span>${escapeHtml(x)}</span></li>`).join('');
   const exclusions=p.notIncluded?.length?`<div class="package-exclusions"><strong>Not included in Starter</strong>${p.notIncluded.map(x=>`<span>• ${escapeHtml(x)}</span>`).join('')}</div>`:'';
-  return `<article class="package-card hr-package-card ${p.featured?'featured':''}">${p.featured?'<span class="package-tag">MOST CHOSEN</span>':''}<div class="package-head"><div><h3>${escapeHtml(p.name)}</h3><p>${escapeHtml(p.team)}</p></div><strong>${money(p.price)}<small>/ month</small></strong></div>${p.teamNote?`<div class="package-team-note">${escapeHtml(p.teamNote)}</div>`:''}<ul>${items}</ul>${exclusions}<div class="package-webline">Outsourced HR support</div><a class="btn ${p.featured?'btn-primary':'btn-outline'}" href="${hrWaUrl(`Hi Sha Digii! I’m interested in the ${p.name} outsourced HR package — ${money(p.price)} / month.`)}" target="_blank" rel="noopener">Talk about ${escapeHtml(p.name)} HR</a></article>`;
+  return `<article class="package-card hr-package-card ${p.featured?'featured':''}">${p.featured?'<span class="package-tag">MOST CHOSEN</span>':''}<div class="package-head"><div><h3>${escapeHtml(p.name)}</h3><p>${escapeHtml(p.team)}</p></div><strong>${money(p.price)}<small>/ month</small></strong></div>${p.teamNote?`<div class="package-team-note">${escapeHtml(p.teamNote)}</div>`:''}<ul>${items}</ul>${exclusions}<div class="package-webline">Outsourced HR support</div><a class="btn ${p.featured?'btn-primary':'btn-outline'}" href="${waUrl(`Hi Sha Digii! I’m interested in the ${p.name} outsourced HR package — ${money(p.price)} / month.`)}" target="_blank" rel="noopener">Talk about ${escapeHtml(p.name)} HR</a></article>`;
 }
 function renderHrPackages(){document.querySelectorAll('[data-hr-package-grid]').forEach(w=>w.innerHTML=hrPackages.map(hrPackageCard).join(''));}
 
 function addonCard(a,interactive){
   const price=a.priceLabel || money(a.price);
-  const billing=a.billing==='one-time' ? '<span class="addon-billing">ONE-TIME</span>' : '';
+  const billing=a.billing==='one-time' ? '<span class="addon-billing">ONE-TIME PACKAGE</span>' : '';
   const input=interactive?`<label class="addon-check" aria-label="Select ${escapeHtml(a.name)}"><input type="checkbox" value="${a.price}" data-addon-name="${escapeHtml(a.name)}" data-addon-billing="${escapeHtml(a.billing||'add-on')}" data-addon-label="${escapeHtml(price)}" data-addon-variable="${a.variable?'true':'false'}"><span></span></label>`:'';
   return `<article class="addon-card" data-addon-id="${a.id}"><div class="addon-main"><div class="addon-top-row"><button class="addon-toggle" type="button" aria-expanded="false"><span class="addon-title-group"><strong>${escapeHtml(a.name)} ${billing}</strong><small>${escapeHtml(a.category)}</small></span><span class="addon-chevron">+</span></button>${input}</div><p class="addon-summary">${escapeHtml(a.summary)}</p><div class="addon-details" hidden><ul>${a.highlights.map(x=>`<li>${escapeHtml(x)}</li>`).join('')}</ul>${a.footnote?`<div class="addon-note">${escapeHtml(a.footnote)}</div>`:''}</div><div class="addon-price">${escapeHtml(price)}</div></div></article>`;
 }
@@ -181,21 +184,38 @@ function renderAddons(){document.querySelectorAll('[data-addon-grid]').forEach(g
 
 function setupPlanners(){
   document.querySelectorAll('[data-planner]').forEach(root=>{
-    const select=root.querySelector('[data-planner-package]'), grid=root.querySelector('[data-addon-grid]'), lines=root.querySelector('[data-planner-lines]'), total=root.querySelector('[data-planner-total]'), totalLabel=root.querySelector('[data-planner-total-label]'), send=root.querySelector('[data-planner-send]');
-    if(!select||!grid||!lines||!total||!send)return;
-    select.innerHTML='<option value="0">No monthly package, add-ons only</option><optgroup label="Digital Marketing">'+packages.map(p=>`<option value="${p.price}" data-name="${p.name}" data-kind="monthly">${p.name} – ${money(p.price)}</option>`).join('')+'</optgroup><optgroup label="Outsourced HR">'+hrPackages.map(p=>`<option value="${p.price}" data-name="${p.name}" data-kind="monthly">${p.name} HR – ${money(p.price)}</option>`).join('')+'</optgroup>';select.value='35000';
+    const dmSelect=root.querySelector('[data-planner-dm]'), hrSelect=root.querySelector('[data-planner-hr]'), grid=root.querySelector('[data-addon-grid]'), lines=root.querySelector('[data-planner-lines]'), total=root.querySelector('[data-planner-total]'), totalLabel=root.querySelector('[data-planner-total-label]'), send=root.querySelector('[data-planner-send]');
+    if(!dmSelect||!hrSelect||!grid||!lines||!total||!send)return;
+
+    dmSelect.innerHTML='<option value="0">No Digital Marketing package</option>'+packages.map(p=>`<option value="${p.price}" data-name="${p.name}" data-kind="monthly">${p.name} – ${money(p.price)}</option>`).join('');
+    hrSelect.innerHTML='<option value="0">No HR package</option>'+hrPackages.map(p=>`<option value="${p.price}" data-name="${p.name}" data-kind="monthly">${p.name} HR – ${money(p.price)}</option>`).join('');
+    dmSelect.value='35000';
+    hrSelect.value='0';
+
     const update=()=>{
-      const opt=select.selectedOptions[0], chosen=[];
-      if(Number(opt.value))chosen.push({name:opt.dataset.name+(hrPackages.some(p=>p.name===opt.dataset.name)?' HR':''),price:Number(opt.value),billing:'monthly',variable:false,label:money(Number(opt.value))+' / month'});
+      const chosen=[];
+      const dm=dmSelect.selectedOptions[0];
+      const hr=hrSelect.selectedOptions[0];
+      if(dm && Number(dm.value)) chosen.push({name:dm.dataset.name,price:Number(dm.value),billing:'monthly',variable:false,label:money(Number(dm.value))+' / month'});
+      if(hr && Number(hr.value)) chosen.push({name:hr.dataset.name+' HR',price:Number(hr.value),billing:'monthly',variable:false,label:money(Number(hr.value))+' / month'});
       grid.querySelectorAll('input[type=checkbox]:checked').forEach(i=>chosen.push({name:i.dataset.addonName,price:Number(i.value),billing:i.dataset.addonBilling==='one-time'?'one-time':'add-on',variable:i.dataset.addonVariable==='true',label:i.dataset.addonLabel||money(Number(i.value))}));
-      const sum=chosen.reduce((a,b)=>a+b.price,0), hasVariable=chosen.some(i=>i.variable);
+
+      const sum=chosen.reduce((a,b)=>a+b.price,0);
+      const hasVariable=chosen.some(i=>i.variable);
       if(totalLabel) totalLabel.textContent=hasVariable?'Total from':'Total';
-      lines.innerHTML=chosen.length?chosen.map(i=>`<li><span>${escapeHtml(i.name)} ${i.billing==='one-time'?'<small>ONE-TIME</small>':''}${i.variable?'<small>FROM</small>':''}</span><strong>${escapeHtml(i.label)}</strong></li>`).join(''):'<li><span class="muted">Choose a package or add-on to see your total.</span></li>';
+      lines.innerHTML=chosen.length?chosen.map(i=>{
+        const marker=i.billing==='one-time'?'<small>ONE-TIME</small>':'';
+        return `<li><span>${escapeHtml(i.name)} ${marker}</span><strong>${escapeHtml(i.label)}</strong></li>`;
+      }).join(''):'<li><span class="muted">Choose a monthly package or add-on to see your total.</span></li>';
       total.textContent=money(sum);
+
       const linesText=chosen.map(i=>`- ${i.name} (${i.label}${i.billing==='monthly'?' / month':i.billing==='one-time'?' one-time':''})`).join('\n');
       send.href=waUrl(chosen.length?`Hi Sha Digii! I would like this plan:\n${linesText}\n${hasVariable?'Total from':'Total'}: ${money(sum)}`:'Hi Sha Digii! I’d like help choosing a package or add-on for my business.');
     };
-    select.addEventListener('change',update);grid.addEventListener('change',update);update();
+    dmSelect.addEventListener('change',update);
+    hrSelect.addEventListener('change',update);
+    grid.addEventListener('change',update);
+    update();
   });
 }
 
@@ -205,7 +225,7 @@ function renderTestimonials(){
 function renderFaq(){const w=document.querySelector('[data-faq]');if(!w)return;w.innerHTML=faqs.map((f,i)=>`<details ${i===0?'open':''}><summary><span>${String(i+1).padStart(2,'0')}</span><b>${escapeHtml(f.q)}</b><i>＋</i></summary><div>${escapeHtml(f.a)}</div></details>`).join('');}
 
 function init(){
-  injectShared(); setContactData(); serviceCards(); hrServiceCards(); renderPackages(); renderHrPackages(); renderAddons(); setupPlanners(); renderTestimonials(); renderFaq();
+  injectShared(); setContactData(); serviceCards(); marketingPackageServiceCards(); hrServiceCards(); renderPackages(); renderHrPackages(); renderAddons(); setupPlanners(); renderTestimonials(); renderFaq();
   if(document.body.dataset.page==='home') renderPortfolio({limit:6});
   if(document.body.dataset.page==='work') renderPortfolio({filters:true});
 }
