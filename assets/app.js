@@ -164,6 +164,13 @@ function packageCard(p){
 }
 function renderPackages(){document.querySelectorAll('[data-package-grid]').forEach(w=>w.innerHTML=packages.map(packageCard).join(''));}
 
+function hrPackageCard(p){
+  const items=p.items.map(x=>`<li><b>✓</b><span>${escapeHtml(x)}</span></li>`).join('');
+  const exclusions=p.notIncluded?.length?`<div class="package-exclusions"><strong>Not included in Starter</strong>${p.notIncluded.map(x=>`<span>• ${escapeHtml(x)}</span>`).join('')}</div>`:'';
+  return `<article class="package-card hr-package-card ${p.featured?'featured':''}">${p.featured?'<span class="package-tag">MOST CHOSEN</span>':''}<div class="package-head"><div><h3>${escapeHtml(p.name)}</h3><p>${escapeHtml(p.team)}</p></div><strong>${money(p.price)}<small>/ month</small></strong></div>${p.teamNote?`<div class="package-team-note">${escapeHtml(p.teamNote)}</div>`:''}<ul>${items}</ul>${exclusions}<div class="package-webline">Outsourced HR support</div><a class="btn ${p.featured?'btn-primary':'btn-outline'}" href="${hrWaUrl(`Hi Sha Digii! I’m interested in the ${p.name} outsourced HR package — ${money(p.price)} / month.`)}" target="_blank" rel="noopener">Talk about ${escapeHtml(p.name)} HR</a></article>`;
+}
+function renderHrPackages(){document.querySelectorAll('[data-hr-package-grid]').forEach(w=>w.innerHTML=hrPackages.map(hrPackageCard).join(''));}
+
 function addonCard(a,interactive){
   const price=a.priceLabel || money(a.price);
   const billing=a.billing==='one-time' ? '<span class="addon-billing">ONE-TIME</span>' : '';
