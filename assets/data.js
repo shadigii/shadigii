@@ -6,6 +6,8 @@ const SITE = {
   tagline: 'TURNING CLICKS INTO CUSTOMERS',
   whatsapp: '94761018668',
   whatsappDisplay: '076 101 8668',
+  hrWhatsapp: '94766347108',
+  hrWhatsappDisplay: '076 634 7108',
   email: 'shadigii.agency@gmail.com',
   facebook: 'https://web.facebook.com/shadigii/',
   instagram: 'https://www.instagram.com/sha.digii/',
@@ -34,6 +36,29 @@ const packages = [
   }
 ];
 
+
+const hrPackages = [
+  {
+    id: 'hr-starter', name: 'Starter', price: 18000,
+    team: 'Recommended for teams up to 10 employees', featured: false,
+    items: [
+      'HR Administration','Employee Records & Files','Employment Contracts','HR Letters',
+      'Employee Onboarding — Basic','Employee Offboarding — Basic'
+    ],
+    notIncluded: ['Attendance & Leave','Payroll Preparation','Payslip Preparation','EPF / ETF Support','Recruitment Coordination']
+  },
+  {
+    id: 'hr-growth', name: 'Growth', price: 35000,
+    team: 'Recommended for teams with 11–35 employees', featured: true,
+    teamNote: 'More than 35 employees? We’ll provide a custom quotation based on your team size and requirements.',
+    items: [
+      'HR Administration','Employee Records & Files','Employment Contracts','HR Letters',
+      'Attendance & Leave','Payroll Preparation','Payslip Preparation','EPF / ETF Support',
+      'Recruitment Coordination','Employee Onboarding','Employee Offboarding'
+    ]
+  }
+];
+
 const addons = [
   { id:'growth-surge', name:'Growth Surge Pack', price:5500, category:'Social Addon Package', summary:'FB Page Growth Pack', highlights:['800–1,000 Page Likes','Sri Lanka audience focus','Delivery: 5–7 days'] },
   { id:'instabuzz', name:'InstaBuzz Pack', price:7500, category:'IG Profile Growth Pack', summary:'IG Profile Growth Pack', highlights:['800–1,000 Followers','Balanced & natural growth speed','Delivery: 5–7 days'] },
@@ -41,7 +66,9 @@ const addons = [
   { id:'content-creation', name:'Content Creation Pack', price:12000, category:'Content Creation Addon Package', summary:'Posts & reels ready to publish', highlights:['8 Posts','4 Reels','8–12 total content pieces','Delivery: 1–3 days'] },
   { id:'reel-studio', name:'Reel Studio Pack', price:15000, category:'Video Creation Addon Package', summary:'Professional short-form videos', highlights:['5–6 videos, 15–60 seconds each','Concept & script ideas included','Captions, music & transitions','1 revision per video','Optimized for FB Reels, IG Reels & TikTok','Delivery: 3–5 days'] },
   { id:'store-stocker', name:'Store Stocker Pack', price:15000, category:'Website Addon Package', summary:'Website product upload support', highlights:['100 Products Uploaded','SEO-friendly titles & descriptions','Pricing, variants & categories','Up to 4 images per product','WooCommerce & Shopify support','Delivery: 3–5 days'], footnote:'Extra products: LKR 100 per product' },
-  { id:'business-autopilot', name:'Business Autopilot Pack', price:20000, category:'Staff & Salary Management System', summary:'Staff & salary management', highlights:['Employee records','Attendance tracking','Leave management','Salary calculation','EPF & ETF calculation','Monthly payslips','Delivery: 5–7 days'] }
+  { id:'hr-recruitment', name:'Recruitment', price:8000, category:'HR One-Time / Add-On Service', summary:'Recruitment support priced by role', highlights:['Junior / General Positions — from LKR 8,000 per successful hire','Professional / Specialist Positions — from LKR 14,000 per successful hire','Senior / Management Positions — from LKR 20,000 per successful hire'], billing:'one-time', priceLabel:'From LKR 8,000', variable:true },
+  { id:'employee-documentation', name:'Employee Documentation', price:10000, category:'HR One-Time / Add-On Service', summary:'HR documentation setup for your team', highlights:['Starting from LKR 10,000'], billing:'one-time', priceLabel:'From LKR 10,000', variable:true },
+  { id:'onsite-hr-support', name:'On-Site HR Support', price:3000, category:'HR One-Time / Add-On Service', summary:'On-site HR support when required', highlights:['LKR 3,000–5,000 per day','Depending on location and requirements','Travel expenses may apply separately'], billing:'one-time', priceLabel:'LKR 3,000–5,000 / day', variable:true }
 ];
 
 const portfolio = [
@@ -182,4 +209,17 @@ const services = [
   { icon:'▣', title:'Website & e-commerce', text:'Build and manage store pages, product content and ongoing web updates.' },
   { icon:'⌕', title:'SEO & Google visibility', text:'Structure product and brand content around the searches your customers make.' },
   { icon:'▤', title:'Online sales support', text:'Help with customer inquiries, order confirmation and day-to-day digital operations.' }
+];
+
+
+const hrServices = [
+  { icon:'⌂', title:'Recruitment & hiring', text:'Job descriptions, job ads, CV screening, shortlisting, interview coordination, reference-check coordination and onboarding support.' },
+  { icon:'▤', title:'HR administration', text:'Employee files, contracts, HR letters, confirmations, promotions, transfers, warnings, resignations and documentation.' },
+  { icon:'▥', title:'Payroll support', text:'Monthly payroll preparation, attendance and leave adjustments, salary calculations, deductions, payslips and bank salary files.' },
+  { icon:'✓', title:'EPF / ETF support', text:'Employee and statutory record preparation and submission support.' },
+  { icon:'◷', title:'Attendance & leave', text:'Attendance monitoring, leave records, late and absence monitoring and monthly HR reports.' },
+  { icon:'□', title:'HR policies', text:'Employee handbook, leave policy, attendance policy, recruitment procedures, disciplinary procedures and other workplace policies.' },
+  { icon:'＋', title:'Employee onboarding', text:'Joining documents, employee files, induction checklists and onboarding coordination.' },
+  { icon:'↗', title:'Employee offboarding', text:'Resignation documents, exit interviews, clearance and final settlement support.' },
+  { icon:'◎', title:'Disciplinary & employee relations', text:'Warning letters, show-cause documentation, grievance documentation and disciplinary process support.' }
 ];
