@@ -1,4 +1,4 @@
-# Sha Digii — Final Static Website
+# Sha Digii — Final Static Website 
 
 Static HTML/CSS/JavaScript site for Sha Digii.
 
